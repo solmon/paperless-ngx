@@ -1,0 +1,65 @@
+{
+  // Launch profile for running the Paperless service with uv in an integrated terminal.
+  // This uses bash as the runtime to run an arbitrary shell command.
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Paperless: UV",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "/bin/bash",
+      "runtimeArgs": ["-lc", "uv run paperless --native-tls"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "PIP_CONFIG_FILE": "${workspaceFolder}/.pip/pip.conf",
+        "PIP_CERT": "/home/solmon/github/questmind/zscaler_root.crt",
+        "SSL_CERT_FILE": "/home/solmon/github/questmind/zscaler_root.crt",
+        "CURL_CA_BUNDLE": "/home/solmon/github/questmind/zscaler_root.crt",
+        "REQUESTS_CA_BUNDLE": "/home/solmon/github/questmind/zscaler_root.crt",
+        "GRPC_DEFAULT_SSL_ROOTS_FILE_PATH": "/home/solmon/github/questmind/zscaler_root.crt"
+      }
+    }
+    ,
+    {
+      "name": "Paperless: Manage (local)",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "/bin/bash",
+      "runtimeArgs": ["-lc", "python3 src/manage.py runserver 0.0.0.0:8000"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "PIP_CONFIG_FILE": "${workspaceFolder}/.pip/pip.conf",
+        "PIP_CERT": "/home/solmon/github/questmind/zscaler_root.crt",
+        "SSL_CERT_FILE": "/home/solmon/github/questmind/zscaler_root.crt",
+        "CURL_CA_BUNDLE": "/home/solmon/github/questmind/zscaler_root.crt",
+        "REQUESTS_CA_BUNDLE": "/home/solmon/github/questmind/zscaler_root.crt",
+        "GRPC_DEFAULT_SSL_ROOTS_FILE_PATH": "/home/solmon/github/questmind/zscaler_root.crt"
+      }
+    }
+    ,
+    {
+      "name": "Paperless: Manage (debug)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/manage.py",
+      "args": ["runserver", "0.0.0.0:8000"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "django": true,
+      "subProcess": true,
+      "env": {
+        "PIP_CONFIG_FILE": "${workspaceFolder}/.pip/pip.conf",
+        "PIP_CERT": "/home/solmon/github/questmind/zscaler_root.crt",
+        "SSL_CERT_FILE": "/home/solmon/github/questmind/zscaler_root.crt",
+        "CURL_CA_BUNDLE": "/home/solmon/github/questmind/zscaler_root.crt",
+        "REQUESTS_CA_BUNDLE": "/home/solmon/github/questmind/zscaler_root.crt",
+        "GRPC_DEFAULT_SSL_ROOTS_FILE_PATH": "/home/solmon/github/questmind/zscaler_root.crt"
+      }
+    }
+  ]
+}
