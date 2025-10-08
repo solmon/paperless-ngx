@@ -70,6 +70,9 @@ dependencies = [
   "whitenoise~=6.9",
   "whoosh-reloaded>=2.7.5",
   "zxing-cpp~=2.3.0",
+  # Database adapters - ensure available when running via `uv sync`/`uv run`
+  "psycopg[c,pool]==3.2.9",
+  "psycopg2-binary~=2.9.7",
 ]
 
 optional-dependencies.mariadb = [
@@ -305,3 +308,6 @@ zxing-cpp = [
 
 [tool.django-stubs]
 django_settings_module = "paperless.settings"
+
+[project.scripts]
+paperless = "manage:main"
